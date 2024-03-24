@@ -1,11 +1,13 @@
 import express, { Request, Response } from 'express';
+import playerRoutes from './routes/playerRoutes';
+import coachRoutes from './routes/coachRoutes';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('¡Hola desde Node.js, Express y TypeScript!');
-});
+app.use('/api', playerRoutes);
+app.use('/api', coachRoutes);
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
