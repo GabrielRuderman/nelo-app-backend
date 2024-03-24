@@ -1,0 +1,60 @@
+# Carpeta node_modules generada por npm/yarn
+node_modules/
+
+# Carpeta de archivos compilados TypeScript
+dist/
+
+# Carpeta de resultados de pruebas
+coverage/
+
+# Archivo de configuración de entorno
+.env
+
+# Archivos de registro
+*.log
+
+# Archivos generados por el sistema operativo
+.DS_Store
+
+# Carpetas y archivos específicos de Visual Studio Code
+.vscode/
+.vscode/
+
+# Archivo de bloqueo de dependencias (npm)
+package-lock.json
+
+# Archivo de bloqueo de dependencias (yarn)
+yarn.lock
+
+# Archivos específicos de TypeScript
+*.tsbuildinfo
+
+# Carpeta específica de dependencias (node_modules) de TypeScript
+types/
+
+# Archivos específicos de desarrollo
+*.swp
+*.swo
+*.out
+*.pid
+*.seed
+*.pem
+
+# Carpeta específica de archivos compilados (por ejemplo, TypeScript)
+/out/
+
+# Archivos específicos de pruebas
+/coverage
+/nyc_output
+
+# Carpeta específica de archivos generados por Babel
+/dist/
+
+# Carpeta específica de archivos generados por vue-cli-service
+/dist/
+
+# Archivo específico de vue-cli-service
+.report.html
+
+# Carpeta específica de archivos generados por react-scripts
+/build/
