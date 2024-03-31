@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { pool } from '../../config/database';
 import bcrypt from 'bcrypt';
+import { getPasswordByEmail } from '../daos/userDAO';
 
 export const login = async (req: Request, res: Response) => {
     const { email, pwdHash } = req.body;
     try {
-        const { rows } = await pool.query(`SELECT * FROM users WHERE email='${email}'`);
+        const { rows } = await getPasswordByEmail(email);
         bcrypt.compare(pwdHash, rows[0].pwd_hash, (error, result) => {
             if (error) {
                 console.error('UserController : Error comparing passwords:', error);
