@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @openapi
- * /api/user/login:
+ * /user/login:
  *   post:
  *     summary: Login
  *     description: Validate credentials with email and password. Returns a session token in case they are valid.
