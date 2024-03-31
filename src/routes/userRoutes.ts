@@ -8,7 +8,7 @@ const router = express.Router();
  * /api/user/login:
  *   post:
  *     summary: Login
- *     description: Validate credentials
+ *     description: Validate credentials with email and password. Returns a session token in case they are valid.
  *     requestBody:
  *       required: true
  *       content:
@@ -22,7 +22,13 @@ const router = express.Router();
  *                 type: string
  *     responses:
  *       '200':
- *         description: Successful
+ *         description: Credentials are valid
+ *       '401':
+ *         description: Credentials are invalid
+ *       '403':
+ *         description: Inactive user
+ *       '500':
+ *         description: Internal error
  */
 router.post('/user/login', login);
 
