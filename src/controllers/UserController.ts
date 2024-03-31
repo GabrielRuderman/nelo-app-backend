@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { getPasswordByEmail } from '../daos/userDAO';
+import { getUserByEmail } from '../daos/userDAO';
 import { generateToken } from '../utilities/token';
 
 export const login = async (req: Request, res: Response) => {
     const { email, pwdHash } = req.body;
     try {
-        const { rows } = await getPasswordByEmail(email);
+        const { rows } = await getUserByEmail(email);
         bcrypt.compare(pwdHash, rows[0].pwd_hash, (error, result) => {
             if (error) {
                 console.error('UserController : Error comparing passwords:', error);
