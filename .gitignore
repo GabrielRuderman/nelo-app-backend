@@ -7,9 +7,6 @@ dist/
 # Carpeta de resultados de pruebas
 coverage/
 
-# Archivo de configuración de entorno
-.env
-
 # Archivos de registro
 *.log
 
@@ -38,7 +35,6 @@ types/
 *.out
 *.pid
 *.seed
-*.pem
 
 # Carpeta específica de archivos compilados (por ejemplo, TypeScript)
 /out/
