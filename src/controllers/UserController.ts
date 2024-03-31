@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { getPasswordByEmail } from '../daos/userDAO';
+import { generateToken } from '../utilities/token';
 
 export const login = async (req: Request, res: Response) => {
     const { email, pwdHash } = req.body;
@@ -12,9 +13,13 @@ export const login = async (req: Request, res: Response) => {
                 res.status(500).json({ message: error });
             }
             if (result) {
-                res.send("crendeciales validas");
+                if (!rows[0].active) {
+                    res.send("Inactive User");
+                }
+                const token = generateToken(rows[0].user_id, email, rows[0].first_name, rows[0].last_name);
+                res.send(token);
             } else {
-                res.send("credenciales invalidas");
+                res.send("Invalid Credentials");
             }
         });
     } catch (error) {
