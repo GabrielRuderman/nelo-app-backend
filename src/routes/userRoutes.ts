@@ -1,5 +1,5 @@
 import express from 'express';
-import { login } from '../controllers/UserController';
+import { login, logup } from '../controllers/UserController';
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ const router = express.Router();
  *             properties:
  *               email:
  *                 type: string
- *               pwdHash:
+ *               password:
  *                 type: string
  *     responses:
  *       '200':
@@ -31,5 +31,36 @@ const router = express.Router();
  *         description: Internal error
  */
 router.post('/user/login', login);
+
+/**
+ * @openapi
+ * /user/logup:
+ *   post:
+ *     summary: Logup
+ *     description: Generate a new user. If it doesn't exist, an email is sent with a link to click and check if the user is real.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: User was registered as inactive
+ *       '401':
+ *         description: Email is already registered
+ *       '500':
+ *         description: Internal error
+ */
+router.post('/user/logup', logup);
 
 export default router;
