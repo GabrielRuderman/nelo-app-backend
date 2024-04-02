@@ -1,5 +1,5 @@
 import express from 'express';
-import { login, logup } from '../controllers/UserController';
+import { signin, signup } from '../controllers/UserController';
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ const router = express.Router();
  *       '500':
  *         description: Internal error
  */
-router.post('/user/login', login);
+router.post('/user/signin', signin);
 
 /**
  * @openapi
@@ -54,13 +54,13 @@ router.post('/user/login', login);
  *               lastName:
  *                 type: string
  *     responses:
- *       '200':
+ *       '201':
  *         description: User was registered as inactive
  *       '401':
  *         description: Email is already registered
  *       '500':
  *         description: Internal error
  */
-router.post('/user/logup', logup);
+router.post('/user/signup', signup);
 
 export default router;

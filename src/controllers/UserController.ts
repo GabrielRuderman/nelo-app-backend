@@ -4,7 +4,7 @@ import { createUser, getUserByEmail } from '../daos/userDAO';
 import { generateToken } from '../utilities/token';
 import { Status } from '../enums/status.enum';
 
-export const login = async (req: Request, res: Response) => {
+export const signin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     try {
         const { rows } = await getUserByEmail(email);
@@ -33,7 +33,7 @@ export const login = async (req: Request, res: Response) => {
     }
 };
 
-export const logup = async (req: Request, res: Response) => {
+export const signup = async (req: Request, res: Response) => {
     const { email, password, firstName, lastName } = req.body;
     try {
         const { rows } = await getUserByEmail(email);
@@ -59,7 +59,7 @@ export const logup = async (req: Request, res: Response) => {
                 res.status(Status.InternalError).send("User could not be created");
                 return;
             }
-            res.status(Status.Ok).send("User was created with inactive status");
+            res.status(Status.Created).send("User was created with inactive status");
         });
     } catch (error) {
         console.error('UserController :', error);
