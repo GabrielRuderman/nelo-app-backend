@@ -1,5 +1,5 @@
 import express from 'express';
-import { signin, signup } from '../controllers/UserController';
+import { login, recoverPassword, signup } from '../controllers/UserController';
 
 const router = express.Router();
 
@@ -30,13 +30,13 @@ const router = express.Router();
  *       '500':
  *         description: Internal error
  */
-router.post('/user/signin', signin);
+router.post('/user/login', login);
 
 /**
  * @openapi
- * /user/logup:
+ * /user/singup:
  *   post:
- *     summary: Logup
+ *     summary: Signup
  *     description: Generate a new user. If it doesn't exist, an email is sent with a link to click and check if the user is real.
  *     requestBody:
  *       required: true
@@ -46,8 +46,6 @@ router.post('/user/signin', signin);
  *             type: object
  *             properties:
  *               email:
- *                 type: string
- *               password:
  *                 type: string
  *               firstName:
  *                 type: string
@@ -62,5 +60,30 @@ router.post('/user/signin', signin);
  *         description: Internal error
  */
 router.post('/user/signup', signup);
+
+/**
+ * @openapi
+ * /user/recoverPassword:
+ *   post:
+ *     summary: Recover password
+ *     description: Generate a new user. If it doesn't exist, an email is sent with a link to click and check if the user is real.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Recovery password email was sent
+ *       '401':
+ *         description: That email is not registered
+ *       '500':
+ *         description: Internal error
+ */
+router.post('/user/recoverPassword', recoverPassword);
 
 export default router;

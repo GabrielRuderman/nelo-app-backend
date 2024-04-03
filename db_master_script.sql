@@ -12,6 +12,9 @@ CREATE DATABASE nelo_db
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
+
+	CREATE USER develop WITH PASSWORD 'develop';
+	GRANT ALL PRIVILEGES ON DATABASE nelo_db TO develop;
 	
 	ROLLBACK TRANSACTION;
 */
